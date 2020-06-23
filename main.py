@@ -7,6 +7,7 @@ import random
 import urllib
 import time
 import argparse
+import importlib
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -94,21 +95,7 @@ def create_table(conn: sqlite3.Connection, config: dict):
         conn.commit()
     cursor.close()
 
-def parse_url(url: str, regex: str) -> dict:
-
-    def enrich_lambda(x):
-        return {
-            "url": x[0],
-            "desc": x[1],
-            "title": x[2],
-            "date": x[3],
-        }
-
-    def parse_regex(text: str, regex: str) -> list:
-        pattern = re.compile(regex, flags=re.MULTILINE)
-        res = re.findall(pattern, text)
-        enrich = list(map(enrich_lambda, res))
-        return enrich
+def parse_url(url: str, parser_func) -> dict:
 
     AGENT_HEAD = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36"
     headers = {'user-agent': AGENT_HEAD}
@@ -118,7 +105,7 @@ def parse_url(url: str, regex: str) -> dict:
         return {'code': r.status_code}
     logging.debug("Get {} length response from website".format(len(r.text)))
     
-    parse_result = parse_regex(r.text, regex)
+    parse_result = parser_func(r.text)
     return {"code": r.status_code, "content": parse_result}
 
 
@@ -138,7 +125,8 @@ def spy(conn: sqlite3.Connection, config: dict):
             logging.error("Subsite config error")
         logging.info("comes to " + config["subsite_push_tag"])
 
-        result = parse_url(config["subsite_url"], config["subsite_item_regex"])
+        parser_module = importlib.import_module(config["subsite_parser_module"])
+        result = parse_url(config["subsite_url"], parser_module.parser_func)
         final_tag = "#" + site_push_tag + " #" + config["subsite_push_tag"]
         if result["code"] != 200:
             logging.warn("spy error on " + config["subsite_name"])

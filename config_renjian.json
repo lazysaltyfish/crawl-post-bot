@@ -8,31 +8,31 @@
             "subsite_push_tag": "特写",
             "subsite_tag": "texie",
             "subsite_url": "http://renjian.163.com/special/renjian_texie/",
-            "subsite_item_regex": "url:\\\"(.*?)\\\"[\\s\\S]*?desc:\\\"(.*?)\\\"[\\s\\S]*?title:\"(.*?)\"[\\s\\S]*?ptime:\"(.*?)\""
+            "subsite_parser_module": "parser_renjian"
         },
         {
             "subsite_push_tag": "记事",
             "subsite_tag": "jishi",
             "subsite_url": "http://renjian.163.com/special/renjian_jishi/",
-            "subsite_item_regex": "url:\\\"(.*?)\\\"[\\s\\S]*?desc:\\\"(.*?)\\\"[\\s\\S]*?title:\"(.*?)\"[\\s\\S]*?ptime:\"(.*?)\""
+            "subsite_parser_module": "parser_renjian"
         },
         {
             "subsite_push_tag": "大写",
             "subsite_tag": "daxie",
             "subsite_url": "http://renjian.163.com/special/renjian_daxie/",
-            "subsite_item_regex": "url:\\\"(.*?)\\\"[\\s\\S]*?desc:\\\"(.*?)\\\"[\\s\\S]*?title:\"(.*?)\"[\\s\\S]*?ptime:\"(.*?)\""
+            "subsite_parser_module": "parser_renjian"
         },
         {
             "subsite_push_tag": "好读",
             "subsite_tag": "haodu",
             "subsite_url": "http://renjian.163.com/special/renjian_haodu/",
-            "subsite_item_regex": "url:\\\"(.*?)\\\"[\\s\\S]*?desc:\\\"(.*?)\\\"[\\s\\S]*?title:\"(.*?)\"[\\s\\S]*?ptime:\"(.*?)\""
+            "subsite_parser_module": "parser_renjian"
         },
         {
             "subsite_push_tag": "看客",
             "subsite_tag": "kanke",
             "subsite_url": "http://renjian.163.com/special/renjian_kanke/",
-            "subsite_item_regex": "url:\\\"(.*?)\\\"[\\s\\S]*?desc:\\\"(.*?)\\\"[\\s\\S]*?title:\"(.*?)\"[\\s\\S]*?ptime:\"(.*?)\""
+            "subsite_parser_module": "parser_renjian"
         }
     ]
 }
