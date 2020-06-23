@@ -1,0 +1,14 @@
+{
+    "site_name": "观察者网",
+    "site_push_tag": "观察者",
+    "site_tag": "guanchazhe",
+    "site_url": "https://www.guancha.cn/",
+    "sub_sites": [
+        {
+            "subsite_push_tag": "沈逸",
+            "subsite_tag": "shenyi",
+            "subsite_url": "https://www.guancha.cn/ShenYi/",
+            "subsite_parser_module": "parser_guanchazhe_zhuanlan"
+        }
+    ]
+}
