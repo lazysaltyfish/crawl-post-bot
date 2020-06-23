@@ -97,7 +97,7 @@ def create_table(conn: sqlite3.Connection, config: dict):
 
 def parse_url(url: str, parser_func) -> dict:
 
-    AGENT_HEAD = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36"
+    AGENT_HEAD = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.3497.92 Safari/537.36"
     headers = {'user-agent': AGENT_HEAD}
     
     r = requests.get(url, headers=headers)
@@ -105,7 +105,7 @@ def parse_url(url: str, parser_func) -> dict:
         return {'code': r.status_code}
     logging.debug("Get {} length response from website".format(len(r.text)))
     
-    parse_result = parser_func(r.text)
+    parse_result = parser_func(r.content)
     return {"code": r.status_code, "content": parse_result}
 
 

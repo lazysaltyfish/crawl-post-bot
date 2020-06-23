@@ -1,5 +1,5 @@
 import re
-def parser_func(text):
+def parser_func(content):
     REGEX = "url:\\\"(.*?)\\\"[\\s\\S]*?desc:\\\"(.*?)\\\"[\\s\\S]*?title:\"(.*?)\"[\\s\\S]*?ptime:\"(.*?)\""
     def label_lambda(x):
         return {
@@ -8,7 +8,7 @@ def parser_func(text):
             "title": x[2],
             "date": x[3],
         }
-
+    text = content.decode('GBK')
     pattern = re.compile(REGEX, flags=re.MULTILINE)
     res = re.findall(pattern, text)
     label_data = list(map(label_lambda, res))
