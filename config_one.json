@@ -1,0 +1,14 @@
+{
+    "site_name": "One 一个",
+    "site_push_tag": "One一个",
+    "site_tag": "yige",
+    "site_url": "http://wufazhuce.com/",
+    "sub_sites": [
+        {
+            "subsite_push_tag": "文章",
+            "subsite_tag": "article",
+            "subsite_url": "http://wufazhuce.com/",
+            "subsite_parser_module": "parser_one"
+        }
+    ]
+}
